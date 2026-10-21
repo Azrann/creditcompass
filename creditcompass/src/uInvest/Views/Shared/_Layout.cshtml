@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+        <title> CreditCompass </title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Use the correct meta names below for your web application
+            Ref: http://davidbcalhoun.com/2010/viewport-metatag 
+			 
+            <meta name="HandheldFriendly" content="True">
+            <meta name="MobileOptimized" content="320">-->
+		
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <!-- Basic Styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Content/css/bootstrap.min.css")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Content/css/font-awesome.min.css")">
+
+        <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+        <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Content/css/smartadmin-production.css")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Content/css/smartadmin-skins.css")">
+
+        <!-- SmartAdmin RTL Support is under construction
+            <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Content/css/smartadmin-rtl.css")"> -->
+
+        <!-- We recommend you use "your_style.css" to override SmartAdmin
+            specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+            <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Content/css/your_style.css")"> -->
+
+        <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+        <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Content/css/demo.css")">
+
+        <!-- FAVICONS -->
+        <link rel="shortcut icon" href="@Url.Content("~/Content/img/favicon/favicon.ico")" type="image/x-icon">
+        <link rel="icon" href="@Url.Content("~/Content/img/favicon/favicon.ico")" type="image/x-icon">
+
+        <!-- GOOGLE FONT -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+    </head>
+    <body class="">
+        <!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
+
+        @Html.Partial("Header")
+
+        @Html.Partial("LeftMenu")
+
+        <form id="__AjaxAntiForgeryForm" action="#" method="post">@Html.AntiForgeryToken()</form>
+        @RenderBody()
+
+        @Html.Partial("ShortcutMenu")
+
+        @Html.Partial("ScriptsImport")
+
+        <script>
+            $(document).ready(function() {
+
+                // DO NOT REMOVE : GLOBAL FUNCTIONS!
+                pageSetUp();
+
+                /*
+				 * PAGE RELATED SCRIPTS
+				 */
+                $(function () {
+                    // jQuery Flot Chart
+                    var twitter = [[1, 27], [2, 34], [3, 51], [4, 48], [5, 55], [6, 65], [7, 61], [8, 70], [9, 65], [10, 75], [11, 57], [12, 59], [13, 62]],
+                        facebook = [[1, 25], [2, 31], [3, 45], [4, 37], [5, 38], [6, 40], [7, 47], [8, 55], [9, 43], [10, 50], [11, 47], [12, 39], [13, 47]],
+                        data = [
+                            {
+                                label: "Twitter",
+                                data: twitter,
+                                lines: {
+                                    show: true,
+                                    lineWidth: 1,
+                                    fill: true,
+                                    fillColor: {
+                                        colors: [
+                                            {
+                                                opacity: 0.1
+                                            }, {
+                                                opacity: 0.13
+                                            }
+                                        ]
+                                    }
+                                },
+                                points: {
+                                    show: true
+                                }
+                            }, {
+                                label: "Facebook",
+                                data: facebook,
+                                lines: {
+                                    show: true,
+                                    lineWidth: 1,
+                                    fill: true,
+                                    fillColor: {
+                                        colors: [
+                                            {
+                                                opacity: 0.1
+                                            }, {
+                                                opacity: 0.13
+                                            }
+                                        ]
+                                    }
+                                },
+                                points: {
+                                    show: true
+                                }
+                            }
+                        ];
+
+                    var options = {
+                        grid: {
+                            hoverable: true
+                        },
+                        colors: ["#568A89", "#3276B1"],
+                        tooltip: true,
+                        tooltipOpts: {
+                            //content : "Value <b>$x</b> Value <span>$y</span>",
+                            defaultTheme: false
+                        },
+                        xaxis: {
+                            ticks: [[1, "JAN"], [2, "FEB"], [3, "MAR"], [4, "APR"], [5, "MAY"], [6, "JUN"], [7, "JUL"], [8, "AUG"], [9, "SEP"], [10, "OCT"], [11, "NOV"], [12, "DEC"], [13, "JAN+1"]]
+                        },
+                        yaxes: {
+
+                        }
+                    };
+
+                    var plot3 = $.plot($("#statsChart"), data, options);
+                });
+
+                // END TAB 2
+
+                // TAB THREE GRAPH //
+                /* TAB 3: Revenew  */
+
+                $(function () {
+
+                    var trgt = [[1354586000000, 153], [1364587000000, 658], [1374588000000, 198], [1384589000000, 663], [1394590000000, 801], [1404591000000, 1080], [1414592000000, 353], [1424593000000, 749], [1434594000000, 523], [1444595000000, 258], [1454596000000, 688], [1464597000000, 364]], prft = [[1354586000000, 53], [1364587000000, 65], [1374588000000, 98], [1384589000000, 83], [1394590000000, 980], [1404591000000, 808], [1414592000000, 720], [1424593000000, 674], [1434594000000, 23], [1444595000000, 79], [1454596000000, 88], [1464597000000, 36]], sgnups = [[1354586000000, 647], [1364587000000, 435], [1374588000000, 784], [1384589000000, 346], [1394590000000, 487], [1404591000000, 463], [1414592000000, 479], [1424593000000, 236], [1434594000000, 843], [1444595000000, 657], [1454596000000, 241], [1464597000000, 341]], toggles = $("#rev-toggles"), target = $("#flotcontainer");
+
+                    var data = [
+                        {
+                            label: "Target Profit",
+                            data: trgt,
+                            bars: {
+                                show: true,
+                                align: "center",
+                                barWidth: 30 * 30 * 60 * 1000 * 80
+                            }
+                        }, {
+                            label: "Actual Profit",
+                            data: prft,
+                            color: '#3276B1',
+                            lines: {
+                                show: true,
+                                lineWidth: 3
+                            },
+                            points: {
+                                show: true
+                            }
+                        }, {
+                            label: "Actual Signups",
+                            data: sgnups,
+                            color: '#71843F',
+                            lines: {
+                                show: true,
+                                lineWidth: 1
+                            },
+                            points: {
+                                show: true
+                            }
+                        }
+                    ];
+                    var options = {
+                        grid: {
+                            hoverable: true
+                        },
+                        tooltip: true,
+                        tooltipOpts: {
+                            //content: '%x - %y',
+                            //dateFormat: '%b %y',
+                            defaultTheme: false
+                        },
+                        xaxis: {
+                            mode: "time"
+                        },
+                        yaxes: {
+                            tickFormatter: function (val, axis) {
+                                return "$" + val;
+                            },
+                            max: 1200
+                        }
+
+                    };
+                    
+  /*                  function plotNow() {
+                        var d = [];
+                        toggles.find(':checkbox').each(function () {
+                            if ($(this).is(':checked')) {
+                                d.push(data[$(this).attr("name").substr(4, 1)]);
+                            }
+                        });
+                        if (d.length > 0) {
+                            if (plot2) {
+                                plot2.setData(d);
+                                plot2.draw();
+                            } else {
+                                plot2 = $.plot(target, d, options);
+                            }
+                        }
+
+                    };
+
+                    toggles.find(':checkbox').on('change', function () {
+                        plotNow();
+                    });*/
+                    var plot2 = $.plot(target, data, options);
+                    plot2.draw();
+                });
+
+                $(".js-status-update a").click(function() {
+                    var selText = $(this).text();
+                    var $this = $(this);
+                    $this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+                    $this.parents('.dropdown-menu').find('li').removeClass('active');
+                    $this.parent().addClass('active');
+                });
+
+                /*
+				* TODO: add a way to add more todo's to list
+				*/
+
+                // initialize sortable
+                $(function() {
+                    $("#sortable1, #sortable2").sortable({
+                        handle: '.handle',
+                        connectWith: ".todo",
+                        update: countTasks
+                    }).disableSelection();
+                });
+
+                // check and uncheck
+                $('.todo .checkbox > input[type="checkbox"]').click(function() {
+                    var $this = $(this).parent().parent().parent();
+
+                    if ($(this).prop('checked')) {
+                        $this.addClass("complete");
+
+                        // remove this if you want to undo a check list once checked
+                        //$(this).attr("disabled", true);
+                        $(this).parent().hide();
+
+                        // once clicked - add class, copy to memory then remove and add to sortable3
+                        $this.slideUp(500, function() {
+                            $this.clone().prependTo("#sortable3").effect("highlight", {}, 800);
+                            $this.remove();
+                            countTasks();
+                        });
+                    } else {
+                        // insert undo code here...
+                    }
+
+                }); // count tasks
+                function countTasks() {
+
+                    $('.todo-group-title').each(function() {
+                        var $this = $(this);
+                        $this.find(".num-of-tasks").text($this.next().find("li").size());
+                    });
+
+                }
+
+           
+            });
+        </script>
+
+        <!-- Your GOOGLE ANALYTICS CODE Below -->
+        <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script');
+                    ga.type = 'text/javascript';
+                    ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(ga, s);
+                })();
+                </script>
+        
+        @RenderSection("ScriptsSection", false);
+    </body>
+
+</html>
