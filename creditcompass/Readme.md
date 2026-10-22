@@ -1,29 +1,31 @@
+**Languages:** [English](Readme.md) · [Español](README.es.md)
+
 # creditcompass
 
-Prototipo de aplicación web uInvest/CreditCompass con panel administrativo, gestión de empresas y cuentas de usuario.
+uInvest/CreditCompass web application prototype with an administration dashboard, company management, and user accounts.
 
-Documentación basada en los archivos locales revisados el 21 de octubre de 2026.
+Documentation based on local files reviewed on 21 October 2026.
 
 <!-- BEGIN project-context -->
 
-## Antigüedad y evidencia
+## Historical dates and evidence
 
-**Año de referencia de esta versión: 2014.** Se toma el archivo de código o configuración más reciente con una fecha histórica recuperable; no se ha podido confirmar la fecha exacta de creación.
+**Reference year for this version: 2014.** This uses the most recent source or configuration file with a recoverable historical date; the exact creation date could not be confirmed.
 
-- Archivo más reciente datable: **2014-10-05**, [`creditcompass/src/uInvest/uInvest.csproj`](src/uInvest/uInvest.csproj); fecha del commit que modificó el archivo, recuperada del Git local.
-- Primer registro del repositorio Git original que contiene este código: **2014-10-05**. Puede corresponder a una importación; no prueba cuándo se escribió por primera vez.
-- Dependencia fechada más reciente entre las comprobadas: [Backbone.Marionette 1.1.0](https://www.nuget.org/packages/Backbone.Marionette/1.1.0), publicada el **2013-08-19** (versión declarada), en [`creditcompass/src/uInvest/packages.config`](src/uInvest/packages.config).
-- Referencia adicional: destino `v4.5` en [`creditcompass/src/uInvest/uInvest.csproj`](src/uInvest/uInvest.csproj); su [versión estable se publicó el 2012-08-15](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework). Es una pista de generación tecnológica; pudieron existir versiones preliminares anteriores.
+- Most recent datable file: **2014-10-05**, [`creditcompass/src/uInvest/uInvest.csproj`](src/uInvest/uInvest.csproj); date of the commit modifying the file, recovered from local Git history.
+- First record in the original Git repository containing this code: **2014-10-05**. This may be an import and does not establish when the code was first written.
+- Most recently published dependency among those checked: [Backbone.Marionette 1.1.0](https://www.nuget.org/packages/Backbone.Marionette/1.1.0), published on **2013-08-19** (declared version), in [`creditcompass/src/uInvest/packages.config`](src/uInvest/packages.config).
+- Additional reference: target `v4.5` in [`creditcompass/src/uInvest/uInvest.csproj`](src/uInvest/uInvest.csproj); its [stable release was published on 2012-08-15](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework). This indicates the technology generation; earlier preview releases may have existed.
 
-La publicación de una dependencia sitúa la configuración conservada a partir de esa versión, si la referencia es válida. Una actualización de paquetes puede ser mucho más reciente que el inicio del proyecto. No se restauraron paquetes para comprobarlo.
+A dependency's publication places the preserved configuration at or after that version, if the reference is valid. Package updates may be much newer than the project's beginnings. Packages were not restored to verify this.
 
-Se descartaron las marcas de tiempo de la copia de octubre de 2026 y los documentos generados durante esta revisión. Las fechas recuperables no garantizan que no existan cambios posteriores sin datar.
+October 2026 copy timestamps and documents generated during this review were excluded. Recoverable dates do not guarantee that there are no later, undated changes.
 
-## Por qué merece la pena mirarlo
+## Why this is worth exploring
 
-El recorrido CompanyController → CompanyContext → vistas ofrece un ejemplo concreto de CRUD con ASP.NET MVC y Entity Framework dentro de un panel financiero. El valor está en la estructura del prototipo y sus pantallas; la copia no demuestra un motor propio de análisis financiero.
+The CompanyController → CompanyContext → views flow provides a concrete example of CRUD with ASP.NET MVC and Entity Framework in a financial dashboard. Its value is the prototype's structure and screens; this copy does not demonstrate a proprietary financial analysis engine.
 
-Puntos de entrada al código:
+Code entry points:
 
 - [`src/uInvest/Controllers/CompanyController.cs`](src/uInvest/Controllers/CompanyController.cs)
 - [`src/uInvest/Models/CompanyModels.cs`](src/uInvest/Models/CompanyModels.cs)
@@ -31,39 +33,39 @@ Puntos de entrada al código:
 
 <!-- END project-context -->
 
-## Estructura y responsabilidades
+## Structure and responsibilities
 
-| Ruta | Responsabilidad |
+| Path | Responsibility |
 | --- | --- |
-| `src/uInvest.sln` | Solución de Visual Studio. |
-| `src/uInvest/Controllers/CompanyController.cs` | Operaciones de alta, edición, consulta y eliminación de empresas. |
-| `src/uInvest/Controllers/HomeController.cs` | Vistas de inicio, Dashboard y Prototype. |
-| `src/uInvest/Models/CompanyModels.cs` | CompanyContext y CompanyDto con nombre, publicación, ruta y versión. |
-| `src/uInvest/App_Data/` | Archivos locales de base de datos SQL Server. |
+| `src/uInvest.sln` | Visual Studio solution. |
+| `src/uInvest/Controllers/CompanyController.cs` | Company creation, editing, retrieval, and deletion. |
+| `src/uInvest/Controllers/HomeController.cs` | Home, Dashboard, and Prototype views. |
+| `src/uInvest/Models/CompanyModels.cs` | CompanyContext and CompanyDto with name, publication, path, and version. |
+| `src/uInvest/App_Data/` | Local SQL Server database files. |
 
-## Tecnologías y requisitos
+## Technologies and requirements
 
-Windows, Visual Studio/MSBuild con .NET Framework 4.5, ASP.NET MVC 4, Entity Framework 5 y SQL Server/LocalDB.
+Windows, Visual Studio/MSBuild with .NET Framework 4.5, ASP.NET MVC 4, Entity Framework 5, and SQL Server/LocalDB.
 
-Destinos leídos de los proyectos: `v4.5`.
+Targets read from project files: `v4.5`.
 
-## Preparación y arranque
+## Setup and startup
 
-Abrir src/uInvest.sln, restaurar paquetes NuGet y seleccionar uInvest en IIS Express. Crear una base de pruebas y ajustar DefaultConnection antes de usar operaciones de empresas o cuentas.
+Open src/uInvest.sln, restore NuGet packages, and select uInvest in IIS Express. Create a test database and adjust DefaultConnection before using company or account operations.
 
-Soluciones presentes: `src/uInvest.sln`.
+Solutions present: `src/uInvest.sln`.
 
-## Configuración e integraciones
+## Configuration and integrations
 
-Revisar Web.config y sus transformaciones de publicación. Los .mdf y .ldf existentes pueden incluir usuarios u otros datos privados y quedan excluidos.
+Review Web.config and its publish transformations. Existing .mdf and .ldf files may contain users or other private data and are excluded.
 
-## Estado de esta copia
+## Status of this copy
 
-El código visible implementa un prototipo de gestión; no acredita un motor de evaluación crediticia operativo.
+The visible code implements a management prototype; it does not establish the existence of an operational credit assessment engine.
 
-La revisión fue estática: no se restauraron dependencias, no se compiló ni se ejecutaron aplicaciones o pruebas. Los comandos anteriores son instrucciones de preparación, no resultados de validación. Las versiones indicadas son las del código conservado.
+The review was static: dependencies were not restored, and applications and tests were neither built nor run. The commands above are setup instructions, not validation results. Listed versions describe the preserved code.
 
 
-## Copia pública
+## Public copy
 
-Las credenciales originales se han retirado o sustituido por `REPLACE_WITH_YOUR_VALUE`. Los datos locales, sesiones, certificados privados y perfiles de despliegue se omiten. Configurar servicios y credenciales propios antes de ejecutar. La compilación y el funcionamiento con servicios externos no se han validado.
+Original credentials have been removed or replaced with `REPLACE_WITH_YOUR_VALUE`. Local data, sessions, private certificates, and deployment profiles are omitted. Configure your own services and credentials before running. Building and operation with external services have not been validated.
